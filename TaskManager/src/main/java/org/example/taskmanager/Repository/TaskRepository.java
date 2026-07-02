@@ -9,5 +9,5 @@ public interface TaskRepository {
     Task add(Task task) throws Exception;
     void delete(int id) throws Exception;
     List<Task> getAll();
-    void Update(Task task) throws Exception;
+    void update(Task task, String newTaskName, boolean newTaskStatus) throws Exception;
 }

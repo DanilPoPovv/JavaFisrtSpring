@@ -26,7 +26,6 @@ public class TaskService {
     }
     public void editTaskById(int taskId, String newTaskName, boolean newStatus)throws Exception {
         var task = taskRepository.getById(taskId);
-        task.setTitle(newTaskName);
-        task.setCompleted(newStatus);
+        taskRepository.update(task,newTaskName, newStatus);
     }
 }

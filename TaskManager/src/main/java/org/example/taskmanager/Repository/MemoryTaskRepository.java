@@ -44,10 +44,8 @@ public class MemoryTaskRepository implements TaskRepository{
     }
 
     @Override
-    public void Update(Task task) throws Exception{
-        var updatableTask = getById(task.getId());
-        updatableTask.setTitle(task.getTitle());
-        updatableTask.setCompleted(task.isCompleted());
-        
+    public void update(Task task, String newTaskName, boolean newTaskStatus) throws Exception{
+        task.setTitle(newTaskName);
+        task.setCompleted(newTaskStatus);
     }
 }
