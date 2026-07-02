@@ -13,19 +13,21 @@ public class TaskService {
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
-    public Task addTask(String taskName, boolean status) throws Exception
+    public Task addTask(String taskName, boolean status)
     {
-        return taskRepository.add(new Task(taskName,status));
+        return taskRepository.save(new Task(taskName, status));
     }
 
-    public Task getTaskById(int taskId) throws Exception{
-        return taskRepository.getById(taskId);
+    public Task getTaskById(int taskId){
+        return taskRepository.findById(taskId).orElseThrow(() -> new RuntimeException("Task not found"));
     }
-    public void deleteTaskById(int taskId) throws Exception{
-        taskRepository.delete(taskId);
+    public void deleteTaskById(int taskId){
+        taskRepository.deleteById(taskId);
     }
-    public void editTaskById(int taskId, String newTaskName, boolean newStatus)throws Exception {
-        var task = taskRepository.getById(taskId);
-        taskRepository.update(task,newTaskName, newStatus);
+    public void editTaskById(int taskId, String newTaskName, boolean newStatus){
+        var task = getTaskById(taskId);
+        task.setTitle(newTaskName);
+        task.setCompleted(newStatus);
+        taskRepository.save(task);
     }
 }

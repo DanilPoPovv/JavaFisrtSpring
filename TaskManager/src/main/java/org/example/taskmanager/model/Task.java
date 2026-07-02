@@ -1,6 +1,12 @@
 package org.example.taskmanager.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Task")
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private boolean completed;
@@ -13,6 +19,9 @@ public class Task {
         this.id = id;
         this.title = title;
         this.completed = completed;
+    }
+
+    public Task() {
     }
 
     public String getTitle() {
