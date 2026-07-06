@@ -15,11 +15,6 @@ public class Task {
         this.title = title;
         this.completed = completed;
     }
-    public Task(int id, String title, boolean completed) {
-        this.id = id;
-        this.title = title;
-        this.completed = completed;
-    }
 
     public Task() {
     }
@@ -46,5 +41,16 @@ public class Task {
 
     public void setId(int id) {
         this.id = id;
+    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

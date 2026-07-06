@@ -39,7 +39,7 @@ public class TaskController {
     @PostMapping("/task")
     public Task addTask(@RequestBody CreateTaskRequest request) {
         try {
-            var newTask = taskService.addTask(request.getTaskName(), request.getStatus());
+            var newTask = taskService.addTask(request.getTaskName(), request.getStatus(),request.getUserId());
             return newTask;
         } catch (Exception e) {
             System.out.println(e.getMessage());
