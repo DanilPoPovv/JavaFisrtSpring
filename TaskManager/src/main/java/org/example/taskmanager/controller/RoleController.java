@@ -30,6 +30,7 @@ public class RoleController {
     }
     @DeleteMapping("role/{roleId}")
     public void deleteRole(@PathVariable int roleId){
+
         roleService.deleteRole(roleId);
     }
     @PostMapping("role/setRole")
